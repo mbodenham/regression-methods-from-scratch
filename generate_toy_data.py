@@ -1,22 +1,15 @@
 import numpy as np
-import matplotlib.pyplot as plt
 import csv
 
 np.random.seed(0)
 
-x = []
-y = []
-z = []
-for i in np.linspace(-1, 1, 100):
-    for j in np.linspace(-1, 1, 100):
-        z.append(0.5 * np.sin(i) + np.tanh(3*j))
-        x.append(i)
-        y.append(j)
-
 data = []
-for i in range(500):
-    a = np.random.uniform(0, len(x))
-    data.append([x[int(a)], y[int(a)], z[int(a)]])
+for _ in range(500):
+    x = np.random.uniform(-1, 1)
+    y = np.random.uniform(-1, 1)
+    z = 0.5 * np.sin(x) + np.tanh(3*y)
+
+    data.append([x, y, z])
 
 with open('toy_data.csv', 'w') as csvFile:
     writer = csv.writer(csvFile)
